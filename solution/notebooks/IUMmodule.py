@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import re
-import self
 from pandas import value_counts
 from collections import defaultdict
 from pandas.tseries.offsets import DateOffset
@@ -165,6 +164,9 @@ def build_lookup_structures(df_movies, df_oscars):
     return title_to_id, norm_title_to_id, year_to_titles
 
 def find_matching_movie(oscar_title, oscar_year, title_to_id, norm_title_to_id, year_to_titles):
+    if pd.isna(oscar_title) or str(oscar_title).strip() == "":
+        return None
+
     if oscar_title in title_to_id:
         return title_to_id[oscar_title]
 
