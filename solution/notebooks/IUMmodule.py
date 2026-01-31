@@ -256,7 +256,6 @@ def perform_recordlinkage(df_left, df_right, left_block='blocking_key', right_bl
 
     return dict(matches)
 
-# non funziona nel notebook non so perché
 def map_category(category_name):
     categories_map = {
         'BEST PICTURE': ['OUTSTANDING PICTURE', 'OUTSTANDING MOTION PICTURE', 'BEST MOTION PICTURE', 'OUTSTANDING PRODUCTION', 'BEST PICTURE'],
