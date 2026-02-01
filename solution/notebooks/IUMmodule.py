@@ -131,7 +131,28 @@ def standardazing_age_ratings(rating):
     else:
         # No number is found
         return 'Unrated'
-    
+
+def categorize_age_rating(rating):
+    if pd.isna(rating):
+        return 'Unknown'
+    rating = str(rating).upper()
+
+    if 'G' in rating:
+        return 'General Audience'
+    elif any(x in rating for x in ['10+', '11+', '12+', '13+']):
+        return 'Young Teen (10+)'
+    elif any(x in rating for x in ['14+', '15+']):
+        return 'Teen (14+)'
+    elif any(x in rating for x in ['16+', '17+']):
+        return 'Young Adult (16+)'
+    elif '18+' in rating:
+        return 'Adult (18+)'
+    elif 'Unrated' in rating:
+        return 'Unrated'
+    else:
+        return 'Other'
+
+
 def convert_to_float(review):
     if isinstance(review, str) and '/' in review:
         match = re.match(r'(\d+(\.\d+)?)/(\d+)', review)
